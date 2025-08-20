@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited!</title>
+    <!-- Google Fonts: Press Start 2P (pixel game font) -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #0b0b2b, #1b2735 70%, #090a0f);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: #006064;
+            padding: 20px;
+        }
+        .stars {
+            width: 1px;
+            height: 1px;
+            position: absolute;
+            background: white;
+            box-shadow: 2vw 5vh 2px white, 10vw 8vh 2px white, 15vw 15vh 1px white,
+                22vw 22vh 1px white, 28vw 12vh 2px white, 32vw 32vh 1px white,
+                38vw 18vh 2px white, 42vw 35vh 1px white, 48vw 25vh 2px white,
+                53vw 42vh 1px white, 58vw 15vh 2px white, 63vw 38vh 1px white,
+                68vw 28vh 2px white, 73vw 45vh 1px white, 78vw 32vh 2px white,
+                83vw 48vh 1px white, 88vw 20vh 2px white, 93vw 52vh 1px white,
+                98vw 35vh 2px white, 5vw 60vh 1px white, 12vw 65vh 2px white,
+                18vw 72vh 1px white, 25vw 78vh 2px white, 30vw 85vh 1px white,
+                35vw 68vh 2px white, 40vw 82vh 1px white, 45vw 92vh 2px white,
+                50vw 75vh 1px white, 55vw 88vh 2px white, 60vw 95vh 1px white,
+                65vw 72vh 2px white, 70vw 85vh 1px white, 75vw 78vh 2px white,
+                80vw 92vh 1px white, 85vw 82vh 2px white, 90vw 88vh 1px white,
+                95vw 75vh 2px white;
+            animation: twinkle 8s infinite linear;
+        }
+        .stars::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: white;
+            box-shadow: 8vw 12vh 2px white, 16vw 18vh 1px white, 24vw 25vh 2px white,
+                33vw 15vh 1px white, 41vw 28vh 2px white, 49vw 35vh 1px white,
+                57vw 22vh 2px white, 65vw 42vh 1px white, 73vw 28vh 2px white,
+                81vw 48vh 1px white, 89vw 32vh 2px white, 97vw 45vh 1px white,
+                3vw 68vh 2px white, 11vw 75vh 1px white, 19vw 82vh 2px white,
+                27vw 88vh 1px white, 35vw 72vh 2px white, 43vw 85vh 1px white,
+                51vw 92vh 2px white, 59vw 78vh 1px white;
+            animation: twinkle 6s infinite linear reverse;
+        }
+        .shooting-star {
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, white, transparent);
+            animation: shoot 3s infinite ease-in;
+        }
+        .shooting-star:nth-child(1) {
+            top: 20%;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        .shooting-star:nth-child(2) {
+            top: 35%;
+            left: -100px;
+            animation-delay: 1s;
+        }
+        .shooting-star:nth-child(3) {
+            top: 50%;
+            left: -100px;
+            animation-delay: 2s;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0) rotate(25deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(120vw) translateY(50vh) rotate(25deg);
+                opacity: 0;
+            }
+        }
+        h1 {
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            font-size: 2em;
+            margin-bottom: 0.5em;
+            color: #fff;
+            text-shadow: 2px 2px 8px #000;
+        }
+        p {
+            font-size: 1em;
+            margin: 0.5em 0;
+            color: #b2ebf2;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        .button-51 {
+            background-color: transparent;
+            border: 1px solid #266DB6;
+            box-sizing: border-box;
+            color: #fff;
+            font-family: 'Press Start 2P', Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            padding: 16px 23px;
+            position: relative;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px #000;
+        }
+        .button-51:hover,
+        .button-51:active {
+            outline: 0;
+        }
+        .button-51:hover {
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .button-51:before {
+            background-color: #D5EDF6;
+            content: "";
+            height: calc(100% + 3px);
+            position: absolute;
+            right: -7px;
+            top: -9px;
+            transition: background-color 300ms ease-in;
+            width: 100%;
+            z-index: -1;
+        }
+        .button-51:hover:before {
+            background-color: #6DCFF6;
+        }
+        @media (min-width: 768px) {
+            .button-51 {
+                padding: 16px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <h1>You're Invited!</h1>
+    <iframe data-testid="embed-iframe" style="border-radius:12px;max-width:300px;box-shadow:0 4px 15px rgba(0,0,0,0.2);margin:20px auto;display:block;" src="https://open.spotify.com/embed/track/0LNefTzUzZxPEvB6AkcLS1?utm_source=generator" width="300" height="352" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <p>This Wensday at 4:30 PM</p>
+    <p>PAZ 🎳 </p>
+    <button class="button-51" id="inviteButton" role="button">Count Me In!</button>
+
+    <script>
+        document.getElementById('inviteButton').addEventListener('click', function() {
+            alert('Yay! Can\'t wait!');
+            createConfetti();
+        });
+
+        function createConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.backgroundColor = getRandomColor();
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.top = Math.random() * 100 + 'px'; // Start near the top
+                document.body.appendChild(confetti);
+                animateConfetti(confetti);
+            }
+        }
+
+        function animateConfetti(confetti) {
+            const fallDuration = Math.random() * 2 + 3;
+            setTimeout(() => {
+                confetti.style.transition = `transform ${fallDuration}s linear, opacity ${fallDuration}s linear`;
+                confetti.style.transform = `translateY(${window.innerHeight}px)`;
+                confetti.style.opacity = '0';
+            }, 10);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, fallDuration * 1000 + 100);
+        }
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
